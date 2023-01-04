@@ -1,0 +1,50 @@
+   // Cria um objeto Scanner para ler as palavras digitadas pelo usuário
+    Scanner scanner = new Scanner(System.in);
+   // Imprime uma mensagem solicitando que o usuário digite palavras
+    System.out.println("Digite as palavras que deseja procurar (ou digite 'q' para sair):");
+
+    // Loop para ler as palavras digitadas pelo usuário
+    while (true) {
+        // Lê a próxima palavra digitada pelo usuário
+        String word = scanner.next();
+
+        // Se a palavra for 'q', interrompe o loop
+        if (word.equals("q")) {
+            break;
+        }
+
+        // Verifica se a palavra está presente na lista
+        boolean found = false;
+        for (String w : words) {
+            if (w.equals(word)) {
+                found = true;
+                break;
+            }
+        }
+
+        // Se a palavra foi encontrada, incrementa a contagem no mapa
+        if (found) {
+            Integer count = wordCounts.get(word);
+            if (count == null) {
+                count = 0;
+            }
+            wordCounts.put(word, count + 1);
+        }
+    }
+
+    // Fecha o Scanner
+    scanner.close();
+
+    // Imprime as palavras encontradas e suas respectivas contagens
+    for (Map.Entry<String, Integer> entry : wordCounts.entrySet()) {
+        System.out.println(entry.getKey() + ": " + entry.getValue());
+    }
+}
+
+// Lê as palavras de um arquivo de texto e as retorna como um array
+private static String[] readWordsFromFile(String filename) {
+    // TODO: Implemente este método
+    return null;
+  }
+ }
+
